@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<div>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for posts...">
+</div>
+ <ul style="list-style-type:none;" id="myUL">
+
+     {% for post in posts %}
+<li>
+      <article class="media content-section">
+
+          <div class="media-body">
+            <div class="article-metadata"><h2>
+              <a class="article-title">{{ post.title }}</a></h2>
+
+                <img class="rounded-circle account-img" src= "{{ post.image_file }}">
+            </div>
+            <a class="mr-2" href="#">{{ post.author.username }}</a>
+            <p class="article-content">{{ post.content }}</p>
+              <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+          </div>
+        </article>
+</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
